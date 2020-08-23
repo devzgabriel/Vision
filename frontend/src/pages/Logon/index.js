@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {Link, useHistory} from 'react-router-dom'
-import {FiLogIn} from 'react-icons/fi'
+import {FiLogIn, FiKey} from 'react-icons/fi'
 
 import api from '../../services/api'
 
@@ -35,7 +35,7 @@ export default function Logon(){
     <div id="page-home">
       <div className="logon-container">
         <section className="form">
-          <img src={logoImg} alt='Be the Hero' />
+          <img src={logoImg} alt='Vision' />
 
           <form onSubmit={handleLogin}>
             <h1>Faça seu Logon</h1>
@@ -51,19 +51,20 @@ export default function Logon(){
               <FiLogIn size={16} color='#2020d8' />
               Não tenho cadastro
             </Link>
+
           </form>
+
+          <Link className='forgot-id' to="/forgot-id">
+            <FiKey size={16} color='#FFF' />
+            Esqueci minha Id
+          </Link>
+
 
         </section>
         
-        <img src={heroesImg} alt='Heroes'/>
+        <img src={heroesImg} alt='Vision'/>
       
       </div>
     </div>
   )
 }
-
-/*
-
-
-
-*/ 

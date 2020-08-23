@@ -23,11 +23,12 @@ export default function Register(){
       email,
       whatsapp
     }
-    try {const response = await api.post('company', data)
-    alert(`Seu ID de acesso: ${response.data.id}`) //data é o proprio json e id é a chave do objeto
-    history.push('/')
+    try {
+      const response = await api.post('company', data)
+      alert(`Seu ID de acesso: ${response.data.id}`) //data é o proprio json e id é a chave do objeto
+      history.push('/')
     }catch(err) {
-    alert('Erro no cadastro, tente novamente')
+      alert('Erro no cadastro, tente novamente')
     }
   }
 
@@ -35,7 +36,7 @@ export default function Register(){
     <div className="register-container">
       <div className="content">
         <section>
-          <img src={logoImg} alt="Be The Hero"/>
+          <img src={logoImg} alt="Vision"/>
           <h1>Cadastro</h1>
           <p>Faça seu cadastro, entre na plataforma e tenha uma ajuda para administrar funionários e EPIs!</p>
 

@@ -6,7 +6,8 @@ import Register from './pages/Register/index'
 import Profile from './pages/Profile/index'
 import WorkersInf from './pages/WorkersInf/index'
 import WorkersNew from './pages/WorkersNew/index'
-import Cameras from './pages/Cameras/index'
+import ForgotId from './pages/ForgotId/index'
+// import Cameras from './pages/Cameras/index'
 
 export default function Routes(){
   return(
@@ -17,7 +18,8 @@ export default function Routes(){
       <Route path="/profile" component={Profile}/>
       <Route path="/worker/inf" component={WorkersInf}/>
       <Route path="/worker/new" component={WorkersNew}/>
-      <Route path="/cameras" component={Cameras}/>
+      <Route path="/forgot-id" component={ForgotId}/>
+      {/* <Route path="/cameras" component={Cameras}/> */}
     </Switch>
     </BrowserRouter>
   )

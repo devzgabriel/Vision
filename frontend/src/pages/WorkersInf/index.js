@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {FiArrowLeft} from 'react-icons/fi'
 
 import api from '../../services/api'
-import eye from '../../services/eye'
+// import eye from '../../services/eye' // integration here
 
 import './styles.css'
 
@@ -25,7 +25,7 @@ export default function InfWorker(){
     }).then(response =>{
       setWorker(response.data.worker)
     })
-  },[workerId])
+  },[workerId,companyId])   //if err => remove companyId
 
   useEffect(()=>{
     //verify in api if worker is OK

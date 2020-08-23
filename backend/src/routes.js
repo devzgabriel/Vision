@@ -11,6 +11,12 @@ routes.post('/sessions', SessionController.create)
 
 routes.get('/company', CompanyController.index)
 
+routes.post('/company/forgot-id', celebrate({
+  [Segments.BODY]: Joi.object().keys({
+    email: Joi.string().required().email()
+  })
+}), CompanyController.mailId)
+
 routes.post('/company', celebrate({
   [Segments.BODY]: Joi.object().keys({
     name: Joi.string().required(),

@@ -82,3 +82,29 @@ form textarea {
 .back-link:hover {
   opacity: 0.8;
 }
+
+.forgot-id{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  color: #FFF;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+
+  width: 12rem;
+  height: 30px; 
+  background: #2020d8;
+  border: 0;
+  border-radius: 8px;
+}
+
+.forgot-id svg{
+  margin-right: 12px;
+}
+
+.forgot-id:hover {
+  opacity: 0.8;
+}
