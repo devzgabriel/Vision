@@ -26,15 +26,25 @@ module.exports = {
   },
 
   async mailId(request, response){
+    console.log("Enviando email de recuperação...")
     const { email } = request.body
 
+    try{
       const companyProps = await connection('company')
-        .where('email', email)
-        .select('id', 'name')
-        .first()
+      .where('email', email)
+      .select('id', 'name')
+      .first()
 
+      const {id, name} = companyProps
+
+      console.log(companyProps)
+      
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        // service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        // ignoreTLS: false,
+        secure: true,
         auth: {
           user: 'companyvisionproject@gmail.com',
           pass: 'plrt3134'
@@ -43,7 +53,7 @@ module.exports = {
 
       const mailOptions = {
         from: 'companyvisionproject@gmail.com',
-        to: 'gabriel.etefmc@gmail.com',
+        to: email,
         subject: 'Recuperação da sua ID Vision',
         // html: '<h1>Olá</h1><br/><h3>Você tentou acessar a plataforma, mas esqueceu a Id:</h3><br/><h2>${id}</h2><br/><p>Quarde em um lugar seguro!</p>'
         html: `<!doctype html>
@@ -52,10 +62,9 @@ module.exports = {
             <meta charset="utf-8">
           </head>
           <body>
-      const {id, name} = companyProps
-            <h1>Olá, ${companyProps.name}</h1><br/>
+            <h1>Olá, ${name}</h1><br/>
             <h2>Você tentou acessar a plataforma, mas esqueceu a Id:</h2><br/>
-            <h2>${companyProps.id}</h2><br/>
+            <h2>${id}</h2><br/>
             <h2>Guarde em um lugar seguro!</h2>
           </body>
       </html>`
@@ -70,5 +79,9 @@ module.exports = {
           return response.status(204).send()
         }
       })
+    }catch{
+      console.log("Erro no Envio do Email")
+      return response.status(401).json({error:'An error has occurred'})
+    }
   }
 }

@@ -3,19 +3,18 @@ import { Link } from 'react-router-dom'
 import {FiArrowLeft} from 'react-icons/fi'
 
 import api from '../../services/api'
-// import eye from '../../services/eye' // integration here
 
 import './styles.css'
 
 import logoImg from '../../assets/eye.svg'
 
 export default function InfWorker(){
-  const [worker, setWorker] = useState([])
-  const [situation, setSituation] = useState([])
-
+  
   const companyName = localStorage.getItem('companyName')
   const companyId = localStorage.getItem('companyId')
   const workerId = localStorage.getItem('workerId')
+
+  const [worker, setWorker] = useState([])
 
   useEffect(() =>{
     api.get(`worker/${workerId}`, {
@@ -27,11 +26,6 @@ export default function InfWorker(){
     })
   },[workerId,companyId])   //if err => remove companyId
 
-  useEffect(()=>{
-    //verify in api if worker is OK
-
-    setSituation('Equipado')
-  },[])
 
   return(
     <div className="worker-container">
@@ -51,7 +45,7 @@ export default function InfWorker(){
         <p><strong>Código do Funcionário: </strong>{worker.code}</p>
         <p><strong>Função do Funcionário: </strong>{worker.occupation}</p>
 
-        <p><strong>Situação do Funcionário: </strong>{situation}</p>
+        <p><strong>Situação do Funcionário: </strong>{worker.status || 'Sem Informações'}</p>
 
       </div>
 

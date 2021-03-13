@@ -2,5 +2,5 @@ node_modules
 
 src/database/test.sqlite
 src/database/db.sqlite
-
+src\database\db.sqlite
 .env

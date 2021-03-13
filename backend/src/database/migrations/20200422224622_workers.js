@@ -6,6 +6,8 @@ exports.up = function(knex) {
     table.string('name').notNullable()
     table.string('code').notNullable()
     table.decimal('occupation').notNullable()
+    table.string('status').notNullable()
+    table.string('modified').notNullable()
 
     table.string('company_id').notNullable()
     table.foreign('company_id').references('id').inTable('company')

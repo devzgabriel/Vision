@@ -33,6 +33,8 @@ routes.get('/workers', celebrate({
 
 routes.post('/workers', WorkersController.create)
 
+routes.post('/status', WorkersController.setStatus)
+
 routes.delete('/workers/:id', celebrate({
   [Segments.PARAMS]: Joi.object().keys({
     id: Joi.number().required()
@@ -43,6 +45,6 @@ routes.get('/worker/:id', celebrate({
   [Segments.PARAMS]: Joi.object().keys({
     id: Joi.number().required()
   })
-}), WorkersController.getInfo)
+}), WorkersController.getStatus)
 
 module.exports = routes
